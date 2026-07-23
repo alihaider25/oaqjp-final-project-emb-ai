@@ -1,4 +1,5 @@
 """Flask web application for emotion detection using Watson NLP."""
+
 from flask import Flask, request, render_template
 from EmotionDetection import emotion_detector
 
@@ -17,8 +18,10 @@ def emotion_detector_route():
     """Analyze user text and return the detected emotions."""
 
     text_to_analyze = request.args.get("textToAnalyze")
+
     if text_to_analyze is None or text_to_analyze.strip() == "":
-    return "Invalid input! Please enter a text to analyze."
+        return "Invalid input! Please enter a text to analyze."
+
     response = emotion_detector(text_to_analyze)
 
     anger = response["anger"]
